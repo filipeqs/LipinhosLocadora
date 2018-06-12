@@ -35,7 +35,9 @@ namespace API
             services.AddMvc()
                     .AddJsonOptions(opt => opt.SerializerSettings.ContractResolver
                                          = new DefaultContractResolver());
+
             services.AddCors();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

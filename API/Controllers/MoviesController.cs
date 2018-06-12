@@ -12,11 +12,22 @@ namespace API.Controllers
         {
         }
 
-        [HttpGet]
+        [HttpGet()]
         public IActionResult GetMovies()
         {
-            var movies = DomainDispatcher.ExecuteQuery(new GelAllMoviesQuery());
+            var movies = DomainDispatcher.ExecuteQuery(new GetAllMoviesQuery());
             return Ok(movies);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetMovie(int id)
+        {
+            var movie = DomainDispatcher.ExecuteQuery(new GetMovieQuery(id));
+
+            if (movie == null)
+                return NotFound();
+            
+            return Ok(movie);
         }
     }
 }

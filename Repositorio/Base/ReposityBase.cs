@@ -18,7 +18,7 @@ namespace Repository.Base
 
         public void Add(TEntity entity) => DBSet.Add(entity);
 
-        public void GetById(int id) => DBSet.FirstOrDefault(f => f.Id == id);
+        public TEntity GetById(int id) => DBSet.FirstOrDefault(f => f.Id == id);
 
         public void Delete(TEntity entity) => DBSet.Remove(entity);
 

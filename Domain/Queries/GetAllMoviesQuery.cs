@@ -9,7 +9,7 @@ namespace Domain.Queries
     /// <summary>
     /// Query para retornar todos os filmes cadastrados
     /// </summary>
-    public class GelAllMoviesQuery : IQuery<IEnumerable<Movie>>
+    public class GetAllMoviesQuery : IQuery<IEnumerable<Movie>>
     {
         public IEnumerable<Movie> Execute(AppDbContext context)
         {
