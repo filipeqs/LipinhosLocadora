@@ -1,5 +1,4 @@
 ﻿using Domain.Base;
-using Repository;
 using Repository.Services;
 
 namespace Domain.Commands
@@ -9,23 +8,20 @@ namespace Domain.Commands
     /// </summary>
     class LoginCommandHandler : ICommandHandler<LoginCommand>
     {
-        private readonly AppDbContext Context;
-
+        private readonly UserRepository UserRepository;
         public LoginCommand Command { get; set; }
 
-        public LoginCommandHandler(LoginCommand command, AppDbContext context)
+        public LoginCommandHandler(LoginCommand command, UserRepository userRepository)
         {
             Command = command;
-            Context = context;
+            UserRepository = userRepository;
         }
 
         public void Execute()
         {
-            var repository = new UserRepository(Context);
+            var userFromRepository = UserRepository.FindUser(Command.Email, Command.Password);
 
-            var userRepository = repository.FindUser(Command.Email, Command.Password);
-
-            if(userRepository == null)
+            if(userFromRepository == null)
             {
                 Command.WasSuccesful = false;
                 Command.ErrorMessage = "Senha Incorreta";

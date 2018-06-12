@@ -6,7 +6,7 @@ namespace Domain.Commands
     /// Command for user authentication on system
     /// </summary>
     public class LoginCommand : ICommand
-    {
+    {      
         // Output
         public bool WasSuccesful { get; set; }
         public string ErrorMessage { get; set; }

@@ -1,39 +1,34 @@
 ﻿using Domain.Base;
-using Repository;
 using Repository.Services;
-using System.Linq;
 
 namespace Domain.Commands
 {
     /// <summary>
-    /// Handles movie editing
+    /// Handles delete movie
     /// </summary>
-    class EditMovieCommandHandler : ICommandHandler<EditMovieCommand>
+    class DeleteMovieCommandHandler : ICommandHandler<DeleteMovieCommand>
     {
-        private readonly AppDbContext Context;
         private readonly MovieRepository MovieRepository;
+        public DeleteMovieCommand Command { get; set; }
 
-        public EditMovieCommand Command { get; set; }
-
-        public EditMovieCommandHandler(EditMovieCommand command, AppDbContext context, MovieRepository movieRepository)
+        public DeleteMovieCommandHandler(DeleteMovieCommand command, MovieRepository movieRepository)
         {
             Command = command;
-            Context = context;
             MovieRepository = movieRepository;
         }
 
         public void Execute()
         {
-            var movieFromRepository = Context.Movies.FirstOrDefault(m => m.Id == Command.Movie.Id);
+            var movieFromRepository = MovieRepository.GetById(Command.Id);
 
             if (movieFromRepository != null)
             {
-                MovieRepository.EditMovie(Command.Movie);
+                MovieRepository.Delete(movieFromRepository);
 
                 if (!MovieRepository.SaveChanges())
                 {
                     Command.WasSuccesful = false;
-                    Command.ErrorMessage = "Failed to Edit on save";
+                    Command.ErrorMessage = "Failed to delete on save";
                 }
                 else
                     Command.WasSuccesful = true;

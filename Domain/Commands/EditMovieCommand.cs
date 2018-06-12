@@ -7,7 +7,7 @@ namespace Domain.Commands
     /// Command for movie editing
     /// </summary>
     public class EditMovieCommand : ICommand
-    {
+    {    
         // Output
         public bool WasSuccesful { get; set; }
         public string ErrorMessage { get; set; }

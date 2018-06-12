@@ -61,6 +61,16 @@ namespace API.Controllers
                 return BadRequest();
         }
 
-        
+        [HttpDelete("{id}")]
+        public IActionResult DeleteMovie(int id)
+        {
+            var command = new DeleteMovieCommand(id);
+            DomainDispatcher.ExecuteCommand(command);
+
+            if (command.WasSuccesful)
+                return NoContent();
+            else
+                return BadRequest();
+        }
     }
 }

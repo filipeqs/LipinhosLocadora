@@ -9,24 +9,20 @@ namespace Domain.Commands
     /// </summary>
     class CreateMovieCommandHandler : ICommandHandler<CreateMovieCommand>
     {
-        private readonly AppDbContext Context;
-
+        private readonly MovieRepository MovieRepository;
         public CreateMovieCommand Command { get; set; }
 
-        public CreateMovieCommandHandler(CreateMovieCommand command, AppDbContext context)
+        public CreateMovieCommandHandler(CreateMovieCommand command, MovieRepository movieRepository)
         {
             Command = command;
-            Context = context;
+            MovieRepository = movieRepository;
         }
 
         public void Execute()
         {
+            MovieRepository.Add(Command.Movie);
 
-            var repository = new MovieRepository(Context);
-
-            repository.Add(Command.Movie);
-
-            if (!repository.SaveChanges())
+            if (!MovieRepository.SaveChanges())
             {
                 Command.WasSuccesful = false;
                 Command.ErrorMessage = "Creating failed on save";
