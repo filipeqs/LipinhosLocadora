@@ -15,13 +15,13 @@ namespace Domain
             Context = context;
             MovieRepository = new MovieRepository(context);
         }
-
+        
         public void ExecuteCommand(ICommand command)
         {
             if (command.GetType() == typeof(LoginCommand))
             {
                 var authCommand = (LoginCommand)command;
-                var handler = new LoginHandler(authCommand);
+                var handler = new LoginHandler(authCommand, Context);
                 handler.Execute();  
             }
         }

@@ -1,27 +1,34 @@
 ﻿using Domain.Base;
+using Repository;
+using Repository.Services;
 
 namespace Domain.Commands
 {
     class LoginHandler : ICommandHandler<LoginCommand>
     {
+        private readonly AppDbContext Context;
+
         public LoginCommand Command { get; set; }
 
-        public LoginHandler(LoginCommand command)
+        public LoginHandler(LoginCommand command, AppDbContext context)
         {
             Command = command;
+            Context = context;
         }
 
         public void Execute()
         {
-            // Vericar se usuario existe no banco
-            // se sim
-            // a senha é igual?
-            // e sim
-            Command.WasSuccesful = true;
+            var repository = new UserRepository(Context);
 
-            // É nao
-            Command.WasSuccesful = false;
-            Command.ErrorMessage = "Senha Incorreta";
+            var userRepository = repository.FindUser(Command.Email, Command.Password);
+
+            if(userRepository == null)
+            {
+                Command.WasSuccesful = false;
+                Command.ErrorMessage = "Senha Incorreta";
+            }
+            else
+                Command.WasSuccesful = true;
         }
     }
 }

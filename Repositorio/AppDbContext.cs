@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.EntityFrameworkCore;
 using Repository.Entities;
 
 namespace Repository
@@ -10,5 +11,6 @@ namespace Repository
         }
 
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

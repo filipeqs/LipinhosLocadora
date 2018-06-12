@@ -18,6 +18,15 @@ namespace Repository.Services
                     );
             }
 
+            if (!appDbContext.Users.Any())
+            {
+                appDbContext.AddRange
+                    (
+                        new User { Id = 1, Email = "lipinholocadora@outlook.com", Password = "P@assword" },
+                        new User { Id = 2, Email = "lipinholocadora@gmail.com", Password = "P@assword" }
+                    );
+            }
+
             appDbContext.SaveChanges();
         }
 

@@ -1,7 +1,7 @@
-﻿using API.Models;
-using Domain;
+﻿using Domain;
 using Domain.Commands;
 using Microsoft.AspNetCore.Mvc;
+using Repository.Entities;
 
 namespace API.Controllers
 {
@@ -14,9 +14,9 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(AuthModel authModel)
+        public IActionResult Login(User user)
         {
-            var command = new LoginCommand(authModel.Email, authModel.Password);
+            var command = new LoginCommand(user.Email, user.Password);
             DomainDispatcher.ExecuteCommand(command);
 
             if (command.WasSuccesful)
