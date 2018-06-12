@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Serialization;
 using Repository;
 using Repository.Services;
 
@@ -29,7 +30,12 @@ namespace API
             services.AddScoped<MovieRepository>();
             services.AddScoped<DomainDispatcher>();
 
-            services.AddMvc();
+            
+
+            services.AddMvc()
+                    .AddJsonOptions(opt => opt.SerializerSettings.ContractResolver
+                                         = new DefaultContractResolver());
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +45,13 @@ namespace API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder =>
+            {
+                builder.WithOrigins("http://localhost:49304")
+                       .WithMethods("GET", "POST")
+                       .AllowAnyHeader();
+            });
 
             app.UseMvc();
         }
