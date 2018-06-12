@@ -7,6 +7,9 @@ namespace Domain.Queries
 {
     public class GetMovieQuery : IQuery<Movie>
     {
+        /// <summary>
+        /// Query to get a movie in databe by id
+        /// </summary>
         private readonly int Id;
 
         public GetMovieQuery(int id)

@@ -2,8 +2,11 @@
 using System;
 using System.Linq;
 
-namespace Repository.Services
+namespace Repository
 {
+    /// <summary>
+    /// Seed for initial database
+    /// </summary>
     public class DbInitializer
     {
         public static void Seed(AppDbContext appDbContext)

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace Domain.Queries
 {
     /// <summary>
-    /// Query para retornar todos os filmes cadastrados
+    /// Query to get all movies in database
     /// </summary>
     public class GetAllMoviesQuery : IQuery<IEnumerable<Movie>>
     {

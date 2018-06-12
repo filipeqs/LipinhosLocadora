@@ -3,7 +3,7 @@
 namespace Domain.Commands
 {
     /// <summary>
-    /// Realiza autenticação do usiario no sistema
+    /// Command for user authentication on system
     /// </summary>
     public class LoginCommand : ICommand
     {

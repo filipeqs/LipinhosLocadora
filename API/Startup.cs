@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
 using Repository;
+using Repository.Entities;
 using Repository.Services;
 
 namespace API
@@ -27,7 +28,9 @@ namespace API
                 options => options.UseMySQL("Server=localhost;Port=3306;Database=LipinhosLocadora;User=root;Password=12345;SslMode=none", // replace with Connection String
                                             b => b.MigrationsAssembly("API")));
 
+            services.AddScoped<Movie>();
             services.AddScoped<MovieRepository>();
+            services.AddScoped<UserRepository>();
             services.AddScoped<DomainDispatcher>();
 
             

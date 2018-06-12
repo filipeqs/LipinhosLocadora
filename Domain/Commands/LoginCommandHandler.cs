@@ -4,13 +4,16 @@ using Repository.Services;
 
 namespace Domain.Commands
 {
-    class LoginHandler : ICommandHandler<LoginCommand>
+    /// <summary>
+    /// Handles user authentication on system
+    /// </summary>
+    class LoginCommandHandler : ICommandHandler<LoginCommand>
     {
         private readonly AppDbContext Context;
 
         public LoginCommand Command { get; set; }
 
-        public LoginHandler(LoginCommand command, AppDbContext context)
+        public LoginCommandHandler(LoginCommand command, AppDbContext context)
         {
             Command = command;
             Context = context;

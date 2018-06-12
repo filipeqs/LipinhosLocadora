@@ -8,12 +8,10 @@ namespace Domain
     public class DomainDispatcher
     {
         private readonly AppDbContext Context;
-        private readonly MovieRepository MovieRepository;
 
         public DomainDispatcher(AppDbContext context)
         {
             Context = context;
-            MovieRepository = new MovieRepository(context);
         }
         
         public void ExecuteCommand(ICommand command)
@@ -21,8 +19,22 @@ namespace Domain
             if (command.GetType() == typeof(LoginCommand))
             {
                 var authCommand = (LoginCommand)command;
-                var handler = new LoginHandler(authCommand, Context);
+                var handler = new LoginCommandHandler(authCommand, Context);
                 handler.Execute();  
+            }
+
+            if (command.GetType() == typeof(CreateMovieCommand))
+            {
+                var createMovieCommand = (CreateMovieCommand)command;
+                var handler = new CreateMovieCommandHandler(createMovieCommand, Context);
+                handler.Execute();
+            }
+
+            if (command.GetType() == typeof(EditMovieCommand))
+            {
+                var editCommand = (EditMovieCommand)command;
+                var handler = new EditMovieCommandHandler(editCommand, Context);
+                handler.Execute();
             }
         }
 
