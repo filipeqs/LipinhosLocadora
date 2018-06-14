@@ -1,6 +1,7 @@
 ﻿using Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,12 +29,13 @@ namespace API
                 options => options.UseMySQL("Server=localhost;Port=3306;Database=LipinhosLocadora;User=root;Password=12345;SslMode=none", // replace with Connection String
                                             b => b.MigrationsAssembly("API")));
 
+            services.Configure<FormOptions>(options => options.BufferBody = true);
+
+            services.AddScoped<User>();
             services.AddScoped<Movie>();
             services.AddScoped<MovieRepository>();
             services.AddScoped<UserRepository>();
-            services.AddScoped<DomainDispatcher>();
-
-            
+            services.AddScoped<DomainDispatcher>();        
 
             services.AddMvc()
                     .AddJsonOptions(opt => opt.SerializerSettings.ContractResolver
@@ -52,11 +54,12 @@ namespace API
             }
 
             app.UseCors(builder =>
-            {
                 builder.WithOrigins("http://localhost:49304")
-                       .WithMethods("GET", "POST")
-                       .AllowAnyHeader();
-            });
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+            );
 
             app.UseMvc();
         }

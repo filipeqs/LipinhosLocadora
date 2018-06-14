@@ -32,24 +32,22 @@ namespace API.Controllers
             return Ok(movie);
         }
 
-        [HttpPost]
+        [HttpPost("create")]
         public IActionResult CreateMovie([FromBody]Movie movie)
         {
             if (movie == null)
-                return BadRequest();
+                return NotFound();
 
             var command = new CreateMovieCommand(movie);
             DomainDispatcher.ExecuteCommand(command);
 
             if (command.WasSuccesful)
-                return CreatedAtRoute("GetMovie",
-                    new { id = movie.Id },
-                    movie);
+                return Ok();
             else
                 return BadRequest();
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("edit/{id}")]
         public IActionResult EditMovie(int id, [FromBody]Movie movie)
         {
             var command = new EditMovieCommand(movie);
@@ -61,7 +59,7 @@ namespace API.Controllers
                 return BadRequest();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         public IActionResult DeleteMovie(int id)
         {
             var command = new DeleteMovieCommand(id);

@@ -21,11 +21,21 @@ namespace Domain
 
         public void ExecuteCommand(ICommand command)
         {
+            //var commandName = command.GetType().Name;
+            //var handler = GetType().Assembly.GetTypes().FirstOrDefault(f => f.Name == $"{commandName}Handler");
+            //if (handler != null)
+            //{
+            //    var handlerInstace = Activator.CreateInstance(handler, command, null);
+            //    var handlerMethod = handler.GetMethods().FirstOrDefault(f => f.Name == "Execute");
+            //    if (handlerMethod != null)
+            //        handlerMethod.Invoke(handlerInstace, new object[] { });
+            //}
+
             if (command.GetType() == typeof(LoginCommand))
             {
                 var authCommand = (LoginCommand)command;
                 var handler = new LoginCommandHandler(authCommand, UserRepository);
-                handler.Execute();  
+                handler.Execute();
             }
 
             if (command.GetType() == typeof(CreateMovieCommand))

@@ -33,5 +33,10 @@ namespace Repository.Services
             SaveChanges();
         }
 
+        public IEnumerable<Rent> GetRentsForMovie (int movieId)
+        {
+            return Context.Rents.Where(r => r.Id == movieId).OrderBy(r => r.RentDate).ToList();
+        }
+
     }
 }

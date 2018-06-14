@@ -14,7 +14,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(User user)
+        public IActionResult Login([FromBody] User user)
         {
             var command = new LoginCommand(user.Email, user.Password);
             DomainDispatcher.ExecuteCommand(command);
