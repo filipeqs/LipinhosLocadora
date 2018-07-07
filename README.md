@@ -1,2 +1,4 @@
 # LipinhosLocadora
-LipinhosLocadora ASP.NET Core
+Front-end: HTML, CSS, Bootstrap, JavaScript, JQuery, AngularJS
+
+Back-end: C# .NET
