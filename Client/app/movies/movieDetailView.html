@@ -1,0 +1,54 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading" style="font-size:large">
+        {{vm.title}}
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-2">Movie:</div>
+                    <div class="col-md-6">{{vm.movies.MovieName}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">Code:</div>
+                    <div class="col-md-6">{{vm.movies.Id}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">Release:</div>
+                    <div class="col-md-6">{{vm.movies.ReleaseDate|date}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">Rate:</div>
+                    <div class="col-md-6">{{vm.movies.MovieRateAge}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">Price:</div>
+                    <div class="col-md-6">{{vm.movies.RentPrice|currency }}</div>
+                </div>
+            </div>
+
+            <!--<div class="col-md-6">
+        <img class="center-block img-responsive"
+             style="width:200px;margin:2px;"
+             ng-src="{{vm.movies.imageUrl}}"
+             title="{{vm.movies.MovieName}}">
+    </div>-->
+
+
+        </div>
+    </div>
+    <div class="panel-footer">
+        <a class="btn btn-default"
+           ui-sref="movieList"
+           style="width:80px">
+            <I class="glyphicon glyphicon-chevron-left"></I>
+            Back
+        </a>
+        <a class="btn btn-primary"
+           ui-sref="movieEdit({movieId: vm.movies.Id})"
+           style="width:80px;margin-left:10px">
+            Edit
+        </a>
+    </div>
+</div>

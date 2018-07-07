@@ -1,0 +1,37 @@
+<div class="panel panel-primary"
+     ng-controller="movieListCtrl as vm">
+    <div class="panel-heading"
+         style="font-size:large">
+        Movie List
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <input type="text" placeholder=" Search" ng-model="searchBox" />
+                <tr>
+                    <td>Movie</td>
+                    <td>Release Date</td>
+                    <td>Rate</td>
+                    <td>Price</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="movie in vm.movies | filter:searchBox">
+                    <td>
+                        <a ui-sref="movieDetail({movieId: movie.Id})">
+                        {{ movie.MovieName}}</a>
+                    </td>
+                    <td>{{ movie.ReleaseDate  | date }}</td>
+                    <td>{{ movie.MovieRateAge}}</td>
+                    <td>{{ movie.RentPrice | currency }}</td>
+                    <td>
+                        <a class="btn btn-primary"
+                           ui-sref="movieEdit({movieId: movie.Id})">
+                            Edit
+                        </a>                      
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

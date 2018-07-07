@@ -9,25 +9,26 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repositorio\Repository.csproj", "{BFFB9D07-C41D-4E92-918B-AE14682828C5}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Client", "..\..\..\..\..\Source\Filipinhoslocadora\Presentation\Client\", "{2D86EF94-0407-427E-8B06-86B110F927BE}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Client(2)", "Client\", "{6693EFFE-1237-44B8-9AD3-1035C4176F9F}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.1"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_49304"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\..\Source\Filipinhoslocadora\Presentation\Client\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49304\"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_54858"
+		Debug.AspNetCompiler.PhysicalPath = "Client\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54858\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_49304"
-		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\..\Source\Filipinhoslocadora\Presentation\Client\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49304\"
+		Release.AspNetCompiler.VirtualPath = "/localhost_54858"
+		Release.AspNetCompiler.PhysicalPath = "Client\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54858\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "49304"
-		SlnRelativePath = "..\..\..\..\..\Source\Filipinhoslocadora\Presentation\Client\"
+		VWDPort = "54858"
+		SlnRelativePath = "Client\"
+		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
 Global
@@ -48,10 +49,10 @@ Global
 		{BFFB9D07-C41D-4E92-918B-AE14682828C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFFB9D07-C41D-4E92-918B-AE14682828C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFFB9D07-C41D-4E92-918B-AE14682828C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D86EF94-0407-427E-8B06-86B110F927BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D86EF94-0407-427E-8B06-86B110F927BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D86EF94-0407-427E-8B06-86B110F927BE}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D86EF94-0407-427E-8B06-86B110F927BE}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{6693EFFE-1237-44B8-9AD3-1035C4176F9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6693EFFE-1237-44B8-9AD3-1035C4176F9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6693EFFE-1237-44B8-9AD3-1035C4176F9F}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{6693EFFE-1237-44B8-9AD3-1035C4176F9F}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
